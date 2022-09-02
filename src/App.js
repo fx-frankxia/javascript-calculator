@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { inputNum, inputDot } from './redux/inputSlice'
+import { inputNum, inputDot,inputSymbol,reset } from './redux/inputSlice'
 
 
 function App() {
@@ -21,9 +21,14 @@ function App() {
   const dotClick = () => {
     dispatch(inputDot())
   }
-
-
-
+  //handle symbol click
+  const symbolClick =(e) => {
+    dispatch(inputSymbol(e.target.innerText))
+  }
+  //handle reset
+  const resetClick = () =>{
+    dispatch(reset())
+  }
 
   return (
     <div className="App">
@@ -32,17 +37,17 @@ function App() {
           <div id='output'></div>
       </div>
       <div id='container-keys'>
-        <div id="clear" >AC</div>
-        <div id="divide">/</div>
-        <div id="multiply">X</div>
+        <div id="clear" onClick={resetClick} >AC</div>
+        <div id="divide" onClick={symbolClick}>/</div>
+        <div id="multiply" onClick={symbolClick}>X</div>
         <div id="seven" onClick={numClick}>7</div>
         <div id="eight" onClick={numClick}>8</div>
         <div id="nine" onClick={numClick}>9</div>
-        <div id="subtract">-</div>
+        <div id="subtract" onClick={symbolClick}>-</div>
         <div id="four" onClick={numClick}>4</div>
         <div id="five" onClick={numClick}>5</div>
         <div id="six" onClick={numClick}>6</div>
-        <div id="add">+</div>
+        <div id="add" onClick={symbolClick}>+</div>
         <div id="one" onClick={numClick}>1</div>
         <div id="two" onClick={numClick}>2</div>
         <div id="three" onClick={numClick}>3</div>
