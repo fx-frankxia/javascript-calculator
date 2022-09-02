@@ -1,13 +1,14 @@
 import './App.css';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { inputNum } from './redux/inputSlice'
+import { inputNum, inputDot } from './redux/inputSlice'
 
 
 function App() {
   const dispatch = useDispatch()
 
   const inputDisplay = useSelector(state => state.input.value)
+  console.log(inputDisplay)
 
   //input display
 
@@ -15,8 +16,13 @@ function App() {
   //handle number click
   const numClick = (e) => {
     dispatch(inputNum(e.target.innerText))
-
   }
+  //handle dot click
+  const dotClick = () => {
+    dispatch(inputDot())
+  }
+
+
 
 
   return (
@@ -42,7 +48,7 @@ function App() {
         <div id="three" onClick={numClick}>3</div>
         <div id="equals">=</div>
         <div id="zero" onClick={numClick}>0</div>
-        <div id="decimal">.</div>
+        <div id="decimal" onClick={dotClick}>.</div>
       </div>
     </div>
   );
