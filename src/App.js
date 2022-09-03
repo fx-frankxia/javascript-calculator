@@ -1,14 +1,17 @@
 import './App.css';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { inputNum, inputDot,inputSymbol,reset } from './redux/inputSlice'
+import { inputNum, inputDot,inputSymbol,reset,equal } from './redux/inputSlice'
 
 
 function App() {
   const dispatch = useDispatch()
 
   const inputDisplay = useSelector(state => state.input.value)
-  console.log(inputDisplay)
+  const outputDisplay = useSelector(state => state.input.result)
+  useEffect(()=>{
+    console.log(outputDisplay)
+  },[outputDisplay])
 
   //input display
 
@@ -34,7 +37,7 @@ function App() {
     <div className="App">
       <div id="display">
           <div id='input'>{inputDisplay}</div>
-          <div id='output'></div>
+          <div id='output'>{outputDisplay}</div>
       </div>
       <div id='container-keys'>
         <div id="clear" onClick={resetClick} >AC</div>
@@ -51,7 +54,7 @@ function App() {
         <div id="one" onClick={numClick}>1</div>
         <div id="two" onClick={numClick}>2</div>
         <div id="three" onClick={numClick}>3</div>
-        <div id="equals">=</div>
+        <div id="equals" onClick={()=>dispatch(equal())}>=</div>
         <div id="zero" onClick={numClick}>0</div>
         <div id="decimal" onClick={dotClick}>.</div>
       </div>

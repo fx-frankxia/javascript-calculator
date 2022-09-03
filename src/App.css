@@ -67,12 +67,17 @@ body, #root {
     padding-top: 2px;
     padding-left: 5px;
     padding-right: 5px;
+    border-bottom: 2px solid rgb(184, 184, 184);
+    height: 40%
 }
 
 
-#input {
-    border-bottom: 2px solid rgb(184, 184, 184);
-    height: 40%
+#output {
+    font-size: 2em;
+    text-align: end;
+    padding-top: 11px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #clear {
