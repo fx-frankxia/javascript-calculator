@@ -41,18 +41,31 @@ export const inputSlice = createSlice({
       let prevNumStr = prevArray[prevArray.length-1]
       if(!isNaN(prevNumStr)){
         state.value = [...state.value, action.payload]
-      } 
+      } else if(!isNaN(prevArray[prevArray.length-2]) && action.payload === '-') {
+        state.value = [...state.value, action.payload]
+      }
     },
     reset: (state) => {
       state.value = ['0']
       state.result = null
     },
     equal: (state) => {
-      const inputArr = state.value.map(item => {
+      const inputArr1 = state.value.map((item,index) => {
         if(!isNaN(item)) {
+          if(state.value[index - 1]==='-' && isNaN(state.value[index - 2])) {
+            return parseFloat(-item)
+          }
           return parseFloat(item)
         } else return item
       })
+      const inputArr = inputArr1.filter((item,index) => {
+        if(item !== '-' ) {
+          return item
+        } else if(!isNaN(inputArr1[index-1])) {
+          return item
+        }
+      })
+      console.log(inputArr)
       let tempResult = inputArr[0]
       for(let i=2; i<inputArr.length; i++) {
         if(!isNaN(inputArr[i]) && inputArr[i-1]){
