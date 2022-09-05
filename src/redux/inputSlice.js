@@ -65,7 +65,6 @@ export const inputSlice = createSlice({
           return item
         }
       })
-      console.log(inputArr)
       let tempResult = inputArr[0]
       for(let i=2; i<inputArr.length; i++) {
         if(!isNaN(inputArr[i]) && inputArr[i-1]){

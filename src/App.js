@@ -1,5 +1,4 @@
 import './App.css';
-import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { inputNum, inputDot,inputSymbol,reset,equal } from './redux/inputSlice'
 
@@ -9,12 +8,6 @@ function App() {
 
   const inputDisplay = useSelector(state => state.input.value)
   const outputDisplay = useSelector(state => state.input.result)
-  useEffect(()=>{
-    console.log(outputDisplay)
-  },[outputDisplay])
-
-  //input display
-
 
   //handle number click
   const numClick = (e) => {
